@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mins-api
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:mins_db}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USER:mins_user}
+    password: ${MYSQL_PASSWORD:Mins@2026Secure#DB}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 50MB
+
+app:
+  admin:
+    email: ${ADMIN_EMAIL:admin@mins.in}
+    password-hash: '${ADMIN_PASSWORD_HASH:$2a$10$jnw6NnLCU6FEd65vGQa./O3BRf9cSBWovye3Yg/U94PgLi9XPX0Au}'
+  uploads:
+    directory: uploads
+  jwt:
+    issuer: mins-api
+    secret: "replace-this-development-secret-with-a-secure-production-secret"
+    expiration-minutes: 480
