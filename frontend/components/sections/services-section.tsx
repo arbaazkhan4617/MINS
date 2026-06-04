@@ -15,11 +15,7 @@ export function ServicesSection() {
               text="From trading and product supply to consultancy and customer support, each service is shaped around real operating needs."
             />
           </MotionReveal>
-          {/* <MotionReveal delay={0.1}>
-            <p className="max-w-sm rounded-2xl bg-ivory p-5 text-sm leading-7 text-charcoal/68 shadow-card">
-              Every service card is ready to connect with backend-managed content as the company adds real case studies and media.
-            </p>
-          </MotionReveal> */}
+          {/* Services info container */}
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
