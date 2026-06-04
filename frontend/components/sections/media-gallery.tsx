@@ -14,7 +14,6 @@ function isPlayableVideo(item: MediaItem) {
 export function MediaGallery() {
   const [items, setItems] = useState<MediaItem[]>([]);
   const [active, setActive] = useState("All");
-  const [activeSubCategory, setActiveSubCategory] = useState("All");
   const [selected, setSelected] = useState<MediaItem | null>(null);
 
   useEffect(() => {
@@ -26,23 +25,11 @@ export function MediaGallery() {
     [items]
   );
 
-  const subCategories = useMemo(() => {
-    const scopedItems = active === "All" ? items : items.filter((item) => item.category === active);
-    return ["All", ...Array.from(new Set(scopedItems.map((item) => item.subCategory).filter(Boolean)))];
-  }, [active, items]);
-
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
-      const categoryMatches = active === "All" || item.category === active;
-      const subCategoryMatches = activeSubCategory === "All" || item.subCategory === activeSubCategory;
-      return categoryMatches && subCategoryMatches;
+      return active === "All" || item.category === active;
     });
-  }, [active, activeSubCategory, items]);
-
-  function selectCategory(category: string) {
-    setActive(category);
-    setActiveSubCategory("All");
-  }
+  }, [active, items]);
 
   return (
     <>
@@ -51,7 +38,7 @@ export function MediaGallery() {
           <button
             key={category}
             type="button"
-            onClick={() => selectCategory(category)}
+            onClick={() => setActive(category)}
             className={cn(
               "rounded-full border px-5 py-2 text-sm font-semibold transition",
               active === category
@@ -63,26 +50,6 @@ export function MediaGallery() {
           </button>
         ))}
       </div>
-
-      {subCategories.length > 1 ? (
-        <div className="mt-4 flex flex-wrap justify-center gap-2">
-          {subCategories.map((subCategory) => (
-            <button
-              key={subCategory}
-              type="button"
-              onClick={() => setActiveSubCategory(subCategory)}
-              className={cn(
-                "rounded-full border px-4 py-2 text-xs font-semibold transition",
-                activeSubCategory === subCategory
-                  ? "border-gold bg-gold text-navy"
-                  : "border-navy/10 bg-white text-charcoal/65 hover:border-gold/60 hover:text-navy"
-              )}
-            >
-              {subCategory}
-            </button>
-          ))}
-        </div>
-      ) : null}
 
       <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filteredItems.map((item, index) => (
@@ -114,11 +81,6 @@ export function MediaGallery() {
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-sand">
                   {item.category}
                 </p>
-                {item.subCategory ? (
-                  <p className="mt-1 text-xs font-semibold text-white/80">
-                    {item.subCategory}
-                  </p>
-                ) : null}
                 <div className="mt-2 flex items-center justify-between">
                   <h2 className="font-semibold">{item.title}</h2>
                   {item.type === "Video" ? <PlayCircle size={25} /> : null}
@@ -159,11 +121,6 @@ export function MediaGallery() {
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-gold">
                 {selected.category}
               </p>
-              {selected.subCategory ? (
-                <p className="mt-1 text-sm font-semibold text-charcoal/60">
-                  {selected.subCategory}
-                </p>
-              ) : null}
               <h2 className="mt-2 text-2xl font-bold text-navy">
                 {selected.title}
               </h2>

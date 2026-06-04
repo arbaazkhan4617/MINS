@@ -35,14 +35,14 @@ public class HomepageContentService {
         homepageContentRepository.save(new HomepageContent(
                 CONTENT_ID,
                 "Building Trust Since 2007",
-                "Trusted company delivering quality services with professionalism and commitment.",
+                "ISO 9001, 14001, and 45001 certified manganese, laterite, iron ore, and ochre mining operations at Gosalpur.",
                 DEFAULT_HERO_MEDIA,
                 "image",
                 "Ready to discuss your next business requirement?",
-                "15+",
-                "500+",
-                "1000+",
-                "100%",
+                "2007",
+                "39.44 HA",
+                "3 ISOs",
+                "100% CPCB",
                 Instant.now()
         ));
     }
@@ -78,14 +78,14 @@ public class HomepageContentService {
                 .orElseGet(() -> homepageContentRepository.save(new HomepageContent(
                         CONTENT_ID,
                         "Building Trust Since 2007",
-                        "Trusted company delivering quality services with professionalism and commitment.",
+                        "ISO 9001, 14001, and 45001 certified manganese, laterite, iron ore, and ochre mining operations at Gosalpur.",
                         DEFAULT_HERO_MEDIA,
                         "image",
                         "Ready to discuss your next business requirement?",
-                        "15+",
-                        "500+",
-                        "1000+",
-                        "100%",
+                        "2007",
+                        "39.44 HA",
+                        "3 ISOs",
+                        "100% CPCB",
                         Instant.now()
                 )));
     }

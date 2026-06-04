@@ -13,7 +13,12 @@ import java.util.Set;
 @Service
 public class MediaCategoryService {
 
-    private static final List<String> DEFAULT_CATEGORIES = List.of("Operations", "Work", "Company", "Events");
+    private static final List<String> DEFAULT_CATEGORIES = List.of(
+            "Operations",
+            "Swachhata Hi Seva Campaign",
+            "International Yoga Day Boot Camp",
+            "Har Ghar Tiranga Campaign"
+    );
 
     private final MediaCategoryRepository categoryRepository;
     private final MediaRepository mediaRepository;

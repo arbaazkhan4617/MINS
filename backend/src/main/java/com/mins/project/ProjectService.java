@@ -22,19 +22,27 @@ public class ProjectService {
         }
 
         projectRepository.save(new ProjectEntity(
-                "Industrial Supply Partnership",
-                "Product Supply",
-                "Coordinated recurring supply support for a regional industrial client.",
-                "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122",
-                "Placeholder project detail for admin-managed portfolio content.",
+                "ISO Compliance Integration",
+                "Consultancy",
+                "Integrated ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018 management frameworks.",
+                "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+                "Independently assessed and certified by KK Cert for sustainable mining processes, zero-harm policies, and rigorous environmental stewardship.",
                 Instant.now()
         ));
         projectRepository.save(new ProjectEntity(
-                "Trading Network Expansion",
-                "Trading",
-                "Built stronger vendor coordination and procurement visibility.",
-                "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
-                "Placeholder project detail for admin-managed portfolio content.",
+                "Gosalpur Ambient Quality Monitoring",
+                "Industrial Solutions",
+                "Periodic monitoring of air parameters (PM10, PM2.5, SO2, NO2) and noise levels.",
+                "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+                "Conducted by Sense Varun Environmental Lab, proving that all parameters are well within Central Pollution Control Board (CPCB) standards.",
+                Instant.now()
+        ));
+        projectRepository.save(new ProjectEntity(
+                "Hydrological & Water Safety Auditing",
+                "Industrial Solutions",
+                "Regular physical and chemical assessment of ground water and mines pit water.",
+                "https://images.unsplash.com/photo-1576086213369-97a306d36557",
+                "Verified safe water stewardship with chemical indexes fully compliant with IS 10500:2012 permissible limits.",
                 Instant.now()
         ));
     }

@@ -20,32 +20,38 @@ export type SiteSettings = {
   aboutContent: string;
   aboutImageUrl: string;
   directorMessage: string;
+  gstin: string;
+  proprietor: string;
+  mineSiteAddress: string;
   updatedAt?: string;
 };
 
 export const defaultSiteSettings: SiteSettings = {
-  companyName: "MINS",
-  tagline: "Since 2007",
+  companyName: "S S Enterprises (MINS)",
+  tagline: "Building Trust Since 2007",
   logoUrl: "",
-  email: "info@mins.example",
-  mobile: "+91 98765 43210",
-  whatsappNumber: "919876543210",
-  location: "MP Nagar, Bhopal, Madhya Pradesh",
-  mapEmbedUrl: "https://www.google.com/maps?q=MP%20Nagar%2C%20Bhopal&output=embed",
+  email: "info@ssenterprises.in",
+  mobile: "+91 82260 23925",
+  whatsappNumber: "918226023925",
+  location: "APR Society, H No 40, Katanga Colony, Jabalpur, Madhya Pradesh 482001",
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.0267784013444!2d79.9298585!3d23.169223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981ae17671fe25b%3A0x6bde3084346bbdbf!2sKatanga%2C%20Jabalpur%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
   websiteUrl: "#",
   facebookUrl: "#",
   instagramUrl: "#",
   linkedinUrl: "#",
   xUrl: "#",
-  copyrightText: "Copyright (c) 2026 MINS. All rights reserved.",
-  aboutEyebrow: "About MINS",
-  aboutTitle: "A dependable corporate partner focused on long-term value.",
+  copyrightText: "Copyright (c) 2026 S S Enterprises (MINS). All rights reserved.",
+  aboutEyebrow: "About S S Enterprises",
+  aboutTitle: "A certified partner in safety, environmental stewardship, and sustainable resource extraction.",
   aboutContent:
-    "MINS combines practical business experience, careful execution, and customer-first thinking to deliver services with consistency and trust.",
+    "Established in 2007, S S Enterprises operates the Gosalpur Mine (39.44 Hectares) for manganese, iron ore, laterite, and ochre extraction. Certified for ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018, we deliver high-quality minerals under strict CPCB environmental guidelines.",
   aboutImageUrl:
     "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=85",
   directorMessage:
-    "Our focus is simple: understand the client, communicate clearly, deliver responsibly, and keep improving. MINS is committed to growing with professionalism, humility, and dependable service."
+    "At S S Enterprises, our goal is to build trust through quality work, dedicated service, and environmental compliance. We believe success comes from customer satisfaction, safety stewardship, and continuous improvement.",
+  gstin: "23AWWPS5673F2ZU",
+  proprietor: "Neeraj Shrivastava",
+  mineSiteAddress: "Khasra No. 160, 151, 123, 115, Village Gosalpur, Tehsil Sihora, Jabalpur, Madhya Pradesh 483222"
 };
 
 export async function fetchSiteSettings() {

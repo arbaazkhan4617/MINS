@@ -71,6 +71,15 @@ public class SiteSettings {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String directorMessage;
 
+    @Column(nullable = false)
+    private String gstin;
+
+    @Column(nullable = false)
+    private String proprietor;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String mineSiteAddress;
+
     @Column(nullable = false, length = 1000)
     private String updatedAt;
 
@@ -235,6 +244,30 @@ public class SiteSettings {
 
     public void setDirectorMessage(String directorMessage) {
         this.directorMessage = directorMessage;
+    }
+
+    public String getGstin() {
+        return gstin;
+    }
+
+    public void setGstin(String gstin) {
+        this.gstin = gstin;
+    }
+
+    public String getProprietor() {
+        return proprietor;
+    }
+
+    public void setProprietor(String proprietor) {
+        this.proprietor = proprietor;
+    }
+
+    public String getMineSiteAddress() {
+        return mineSiteAddress;
+    }
+
+    public void setMineSiteAddress(String mineSiteAddress) {
+        this.mineSiteAddress = mineSiteAddress;
     }
 
     public String getUpdatedAt() {

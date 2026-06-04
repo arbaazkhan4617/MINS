@@ -92,7 +92,12 @@ export function SiteSettingsManager() {
           <TextInput label="Email" value={settings.email} onChange={(value) => update("email", value)} />
           <TextInput label="Mobile" value={settings.mobile} onChange={(value) => update("mobile", value)} />
           <TextInput label="WhatsApp Number" value={settings.whatsappNumber} onChange={(value) => update("whatsappNumber", value)} />
-          <TextInput label="Location" value={settings.location} onChange={(value) => update("location", value)} />
+          <TextInput label="Principal Office Location" value={settings.location} onChange={(value) => update("location", value)} />
+          <TextInput label="GSTIN" value={settings.gstin} onChange={(value) => update("gstin", value)} />
+          <TextInput label="Proprietor Name" value={settings.proprietor} onChange={(value) => update("proprietor", value)} />
+        </div>
+        <div className="grid gap-5">
+          <TextInput label="Gosalpur Mine Site Address" value={settings.mineSiteAddress} onChange={(value) => update("mineSiteAddress", value)} />
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">

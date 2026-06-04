@@ -20,6 +20,9 @@ public record SiteSettingsResponse(
         String aboutContent,
         String aboutImageUrl,
         String directorMessage,
+        String gstin,
+        String proprietor,
+        String mineSiteAddress,
         String updatedAt
 ) {
 }

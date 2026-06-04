@@ -21,6 +21,9 @@ public record SiteSettingsRequest(
         @NotBlank String aboutTitle,
         @NotBlank String aboutContent,
         @NotBlank String aboutImageUrl,
-        @NotBlank String directorMessage
+        @NotBlank String directorMessage,
+        @NotBlank String gstin,
+        @NotBlank String proprietor,
+        @NotBlank String mineSiteAddress
 ) {
 }

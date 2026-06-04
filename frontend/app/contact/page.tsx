@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Clock, FileCheck2, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { ContactForm } from "@/components/sections/contact-form";
 import { PageHero } from "@/components/sections/page-hero";
 import { MotionReveal } from "@/components/ui/motion-reveal";
@@ -22,9 +22,11 @@ export default function ContactPage() {
   }, []);
 
   const contactCards = [
-    { title: "Address", text: settings.location, icon: MapPin },
+    { title: "Principal Office", text: settings.location, icon: MapPin },
+    { title: "Gosalpur Mine Site", text: settings.mineSiteAddress, icon: MapPin },
     { title: "Phone", text: settings.mobile, icon: Phone, href: telUrl(settings.mobile) },
     { title: "Email", text: settings.email, icon: Mail, href: `mailto:${settings.email}` },
+    { title: "GSTIN", text: `${settings.gstin} (Proprietorship: ${settings.proprietor})`, icon: FileCheck2 },
     { title: "Business Hours", text: "Monday to Saturday, 10:00 AM - 6:00 PM", icon: Clock }
   ];
 

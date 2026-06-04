@@ -22,11 +22,11 @@ export const defaultHeroMediaSrc =
 export const defaultHomepageContent: HomepageContent = {
   heroHeadline: "Building Trust Since 2007",
   heroSubheading:
-    "Trusted company delivering quality services with professionalism and commitment.",
+    "ISO 9001, 14001, and 45001 certified manganese, laterite, iron ore, and ochre mining operations at Gosalpur.",
   heroMediaSrc: defaultHeroMediaSrc,
   heroMediaType: "image",
   ctaTitle: "Ready to discuss your next business requirement?",
-  stats: ["15+", "500+", "1000+", "100%"]
+  stats: ["2007", "39.44 HA", "3 ISOs", "100% CPCB"]
 };
 
 export function loadHomepageContent(): HomepageContent {

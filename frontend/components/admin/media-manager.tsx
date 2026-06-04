@@ -34,37 +34,23 @@ type MediaEditForm = {
 export function MediaManager() {
   const [items, setItems] = useState<MediaItem[]>([]);
   const [categories, setCategories] = useState<MediaCategory[]>([]);
-  const [subCategories, setSubCategories] = useState<MediaSubCategory[]>([]);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Operations");
-  const [subCategory, setSubCategory] = useState("Dispatch Coordination");
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [mediaUrl, setMediaUrl] = useState("");
   const [mediaUrlType, setMediaUrlType] = useState<"Image" | "Video">("Image");
   const [search, setSearch] = useState("");
   const [editingItem, setEditingItem] = useState<MediaItem | null>(null);
-  const [editForm, setEditForm] = useState<MediaEditForm>({ title: "", category: "", subCategory: "" });
+  const [editForm, setEditForm] = useState<Omit<MediaEditForm, "subCategory">>({ title: "", category: "" });
   const [newCategoryName, setNewCategoryName] = useState("");
-  const [newSubCategoryName, setNewSubCategoryName] = useState("");
-  const [newSubCategoryParent, setNewSubCategoryParent] = useState("Operations");
   const [editingCategoryId, setEditingCategoryId] = useState<number | null>(null);
   const [categoryEditName, setCategoryEditName] = useState("");
-  const [editingSubCategoryId, setEditingSubCategoryId] = useState<number | null>(null);
-  const [subCategoryEditName, setSubCategoryEditName] = useState("");
-  const [subCategoryEditParent, setSubCategoryEditParent] = useState("");
   const [message, setMessage] = useState("");
   const [categoryMessage, setCategoryMessage] = useState("");
-  const [subCategoryMessage, setSubCategoryMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const activeCategories = useMemo(() => categories.filter((entry) => entry.active), [categories]);
   const uploadCategoryOptions = activeCategories.length > 0 ? activeCategories : categories;
-  const parentCategoryNames = (uploadCategoryOptions.length > 0 ? uploadCategoryOptions : categories).map((entry) => entry.name);
-
-  const uploadSubCategoryOptions = useMemo(
-    () => subCategories.filter((entry) => entry.active && entry.category === category),
-    [category, subCategories]
-  );
 
   const editCategoryOptions = useMemo(() => {
     const options = activeCategories.map((entry) => entry.name);
@@ -72,20 +58,12 @@ export function MediaManager() {
     return options;
   }, [activeCategories, editingItem]);
 
-  const editSubCategoryOptions = useMemo(() => {
-    const options = subCategories
-      .filter((entry) => entry.active && entry.category === editForm.category)
-      .map((entry) => entry.name);
-    if (editingItem?.subCategory && !options.includes(editingItem.subCategory)) options.push(editingItem.subCategory);
-    return options;
-  }, [editForm.category, editingItem, subCategories]);
-
   const filteredItems = useMemo(() => {
     const query = search.trim().toLowerCase();
     if (!query) return items;
 
     return items.filter((item) =>
-      [item.title, item.category, item.subCategory, item.type]
+      [item.title, item.category, item.type]
         .filter(Boolean)
         .some((value) => value.toLowerCase().includes(query))
     );
@@ -104,38 +82,16 @@ export function MediaManager() {
       setCategory((current) =>
         nextCategories.some((entry) => entry.active && entry.name === current) ? current : firstActive
       );
-      setNewSubCategoryParent((current) =>
-        nextCategories.some((entry) => entry.active && entry.name === current) ? current : firstActive
-      );
     }
   }
 
-  async function loadSubCategories() {
-    const nextSubCategories = await fetchMediaSubCategories();
-    setSubCategories(nextSubCategories);
-  }
-
   async function loadAll() {
-    await Promise.all([loadMedia(), loadCategories(), loadSubCategories()]);
+    await Promise.all([loadMedia(), loadCategories()]);
   }
 
   useEffect(() => {
     void loadAll();
   }, []);
-
-  useEffect(() => {
-    const firstSubCategory = uploadSubCategoryOptions[0]?.name;
-    if (firstSubCategory && !uploadSubCategoryOptions.some((entry) => entry.name === subCategory)) {
-      setSubCategory(firstSubCategory);
-    }
-  }, [subCategory, uploadSubCategoryOptions]);
-
-  useEffect(() => {
-    const firstSubCategory = editSubCategoryOptions[0];
-    if (editingItem && firstSubCategory && !editSubCategoryOptions.includes(editForm.subCategory)) {
-      setEditForm((current) => ({ ...current, subCategory: firstSubCategory }));
-    }
-  }, [editForm.subCategory, editSubCategoryOptions, editingItem]);
 
   function getToken() {
     return window.localStorage.getItem("mins-admin-token");
@@ -143,22 +99,19 @@ export function MediaManager() {
 
   function handleCategoryChange(nextCategory: string) {
     setCategory(nextCategory);
-    const nextSubCategory = subCategories.find((entry) => entry.active && entry.category === nextCategory)?.name;
-    if (nextSubCategory) setSubCategory(nextSubCategory);
   }
 
   function handleEditCategoryChange(nextCategory: string) {
-    const nextSubCategory = subCategories.find((entry) => entry.active && entry.category === nextCategory)?.name ?? "";
-    setEditForm((current) => ({ ...current, category: nextCategory, subCategory: nextSubCategory }));
+    setEditForm((current) => ({ ...current, category: nextCategory }));
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setMessage("");
 
-    if ((!file && !mediaUrl.trim()) || !title.trim() || !category.trim() || !subCategory.trim()) {
+    if ((files.length === 0 && !mediaUrl.trim()) || !title.trim() || !category.trim()) {
       setStatus("error");
-      setMessage("Add a title, category, subcategory, and either a file or media URL.");
+      setMessage("Add a title, category, and either at least one file or media URL.");
       return;
     }
 
@@ -172,30 +125,37 @@ export function MediaManager() {
     try {
       setStatus("loading");
 
-      if (!file && mediaUrl.trim()) {
-        await createMediaUrl({ title, category, subCategory, type: mediaUrlType, url: mediaUrl.trim() }, token);
+      if (files.length === 0 && mediaUrl.trim()) {
+        await createMediaUrl({ title, category, subCategory: category, type: mediaUrlType, url: mediaUrl.trim() }, token);
       } else {
-        const formData = new FormData();
-        formData.append("file", file as File);
-        formData.append("title", title);
-        formData.append("category", category);
-        formData.append("subCategory", subCategory);
+        // Sequentially upload all files
+        for (let i = 0; i < files.length; i++) {
+          const currentFile = files[i];
+          const fileTitle = files.length > 1 ? `${title} - ${i + 1}` : title;
+          const formData = new FormData();
+          formData.append("file", currentFile);
+          formData.append("title", fileTitle);
+          formData.append("category", category);
+          formData.append("subCategory", category);
 
-        const response = await fetch(`${API_BASE_URL}/api/media`, {
-          method: "POST",
-          headers: { ...API_TUNNEL_HEADERS, Authorization: `Bearer ${token}` },
-          body: formData
-        });
+          const response = await fetch(`${API_BASE_URL}/api/media`, {
+            method: "POST",
+            headers: { ...API_TUNNEL_HEADERS, Authorization: `Bearer ${token}` },
+            body: formData
+          });
 
-        if (!response.ok) throw new Error("Upload failed. Login again and retry.");
+          if (!response.ok) {
+            throw new Error(`Upload failed for file "${currentFile.name}". Login again and retry.`);
+          }
+        }
       }
 
       setTitle("");
-      setFile(null);
+      setFiles([]);
       setMediaUrl("");
       setMediaUrlType("Image");
       setStatus("success");
-      setMessage("Media saved successfully.");
+      setMessage(files.length > 1 ? "All media files saved successfully." : "Media saved successfully.");
       await loadMedia();
     } catch (error) {
       setStatus("error");
@@ -205,21 +165,21 @@ export function MediaManager() {
 
   function openEdit(item: MediaItem) {
     setEditingItem(item);
-    setEditForm({ title: item.title, category: item.category, subCategory: item.subCategory });
+    setEditForm({ title: item.title, category: item.category });
     setMessage("");
   }
 
   function closeEdit() {
     setEditingItem(null);
-    setEditForm({ title: "", category: "", subCategory: "" });
+    setEditForm({ title: "", category: "" });
   }
 
   async function handleEditSave(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!editingItem) return;
 
-    if (!editForm.title.trim() || !editForm.category.trim() || !editForm.subCategory.trim()) {
-      setMessage("Title, category, and subcategory are required.");
+    if (!editForm.title.trim() || !editForm.category.trim()) {
+      setMessage("Title and category are required.");
       return;
     }
 
@@ -230,7 +190,7 @@ export function MediaManager() {
     }
 
     try {
-      await updateMediaItem(editingItem.id, editForm, token);
+      await updateMediaItem(editingItem.id, { ...editForm, subCategory: editForm.category }, token);
       closeEdit();
       await loadMedia();
       setStatus("success");
@@ -336,85 +296,7 @@ export function MediaManager() {
     }
   }
 
-  async function handleCreateSubCategory(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubCategoryMessage("");
-
-    const token = getToken();
-    if (!token) {
-      setSubCategoryMessage("Please login before creating subcategories.");
-      return;
-    }
-
-    if (!newSubCategoryName.trim() || !newSubCategoryParent.trim()) {
-      setSubCategoryMessage("Parent category and subcategory name are required.");
-      return;
-    }
-
-    try {
-      await createMediaSubCategory({ category: newSubCategoryParent, name: newSubCategoryName, active: true }, token);
-      setNewSubCategoryName("");
-      setSubCategoryMessage("Subcategory created successfully.");
-      await loadSubCategories();
-    } catch (error) {
-      setSubCategoryMessage(error instanceof Error ? error.message : "Unable to create subcategory.");
-    }
-  }
-
-  function startSubCategoryEdit(entry: MediaSubCategory) {
-    setEditingSubCategoryId(entry.id);
-    setSubCategoryEditName(entry.name);
-    setSubCategoryEditParent(entry.category);
-    setSubCategoryMessage("");
-  }
-
-  function cancelSubCategoryEdit() {
-    setEditingSubCategoryId(null);
-    setSubCategoryEditName("");
-    setSubCategoryEditParent("");
-  }
-
-  async function saveSubCategory(entry: MediaSubCategory) {
-    const token = getToken();
-    if (!token) {
-      setSubCategoryMessage("Please login before updating subcategories.");
-      return;
-    }
-
-    if (!subCategoryEditName.trim() || !subCategoryEditParent.trim()) {
-      setSubCategoryMessage("Parent category and subcategory name are required.");
-      return;
-    }
-
-    try {
-      await updateMediaSubCategory(
-        entry.id,
-        { category: subCategoryEditParent, name: subCategoryEditName, active: entry.active },
-        token
-      );
-      cancelSubCategoryEdit();
-      setSubCategoryMessage("Subcategory updated successfully.");
-      await loadAll();
-    } catch (error) {
-      setSubCategoryMessage(error instanceof Error ? error.message : "Unable to update subcategory.");
-    }
-  }
-
-  async function toggleSubCategory(entry: MediaSubCategory) {
-    const token = getToken();
-    if (!token) {
-      setSubCategoryMessage("Please login before updating subcategories.");
-      return;
-    }
-
-    try {
-      await updateMediaSubCategory(entry.id, { category: entry.category, name: entry.name, active: !entry.active }, token);
-      setSubCategoryMessage(entry.active ? "Subcategory disabled." : "Subcategory enabled.");
-      await loadSubCategories();
-    } catch (error) {
-      setSubCategoryMessage(error instanceof Error ? error.message : "Unable to update subcategory.");
-    }
-  }
+  // Subcategory event handlers removed
 
   return (
     <div className="grid gap-6">
@@ -423,7 +305,7 @@ export function MediaManager() {
           <div>
             <h1 className="text-2xl font-bold text-navy">Upload Images & Videos</h1>
             <p className="mt-2 text-sm leading-6 text-charcoal/60">
-              Media is saved with category and subcategory, so multiple files can live under the same subcategory.
+              Media is saved with category. Uploaded files will be displayed in their respective public sections.
             </p>
           </div>
           <Link href="/admin/login" className="rounded-full border border-navy/10 px-5 py-3 text-sm font-bold text-navy transition hover:bg-ivory">
@@ -432,7 +314,7 @@ export function MediaManager() {
         </div>
 
         <form onSubmit={handleSubmit} className="mt-6 grid gap-5 rounded-2xl border border-dashed border-gold/60 bg-ivory p-6">
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2">
             <label className="grid gap-2 text-sm font-semibold text-navy">
               Media Title
               <input value={title} onChange={(event) => setTitle(event.target.value)} placeholder="Example: Dispatch Visit 01" className="rounded-xl border border-navy/10 bg-white px-4 py-3 font-normal outline-none transition focus:border-gold" />
@@ -445,18 +327,15 @@ export function MediaManager() {
                 ))}
               </select>
             </label>
-            <label className="grid gap-2 text-sm font-semibold text-navy">
-              Subcategory
-              <select value={subCategory} onChange={(event) => setSubCategory(event.target.value)} className="rounded-xl border border-navy/10 bg-white px-4 py-3 font-normal outline-none transition focus:border-gold">
-                {uploadSubCategoryOptions.map((entry) => (
-                  <option key={entry.id} value={entry.name}>{entry.name}</option>
-                ))}
-              </select>
-            </label>
           </div>
           <label className="grid gap-2 text-sm font-semibold text-navy">
-            Image / Video File
-            <input type="file" accept="image/*,video/*" onChange={(event) => setFile(event.target.files?.[0] ?? null)} className="rounded-xl border border-navy/10 bg-white px-4 py-3 text-sm font-normal outline-none transition file:mr-4 file:rounded-full file:border-0 file:bg-navy file:px-4 file:py-2 file:text-sm file:font-bold file:text-white focus:border-gold" />
+            Image / Video Files
+            <input type="file" multiple key={files.length === 0 ? "empty" : "selected"} accept="image/*,video/*" onChange={(event) => setFiles(Array.from(event.target.files ?? []))} className="rounded-xl border border-navy/10 bg-white px-4 py-3 text-sm font-normal outline-none transition file:mr-4 file:rounded-full file:border-0 file:bg-navy file:px-4 file:py-2 file:text-sm file:font-bold file:text-white focus:border-gold" />
+            {files.length > 0 && (
+              <span className="text-xs font-semibold text-emerald-700 mt-1">
+                {files.length} {files.length === 1 ? "file" : "files"} selected: {files.map((f) => f.name).join(", ")}
+              </span>
+            )}
           </label>
           <div className="grid gap-5 md:grid-cols-[1fr_180px]">
             <label className="grid gap-2 text-sm font-semibold text-navy">
@@ -522,52 +401,7 @@ export function MediaManager() {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-navy/10 bg-white p-6 shadow-card">
-        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-start">
-          <div>
-            <h2 className="text-xl font-bold text-navy">Manage Subcategories</h2>
-            <p className="mt-2 text-sm leading-6 text-charcoal/60">
-              Use subcategories like Dispatch Coordination or Warehouse Review to group many media items.
-            </p>
-          </div>
-          <form onSubmit={handleCreateSubCategory} className="grid w-full gap-3 lg:max-w-2xl lg:grid-cols-[180px_1fr_auto]">
-            <select value={newSubCategoryParent} onChange={(event) => setNewSubCategoryParent(event.target.value)} className="rounded-xl border border-navy/10 bg-ivory px-4 py-3 text-sm outline-none transition focus:border-gold">
-              {parentCategoryNames.map((option) => <option key={option} value={option}>{option}</option>)}
-            </select>
-            <input value={newSubCategoryName} onChange={(event) => setNewSubCategoryName(event.target.value)} placeholder="New subcategory name" className="min-w-0 rounded-xl border border-navy/10 bg-ivory px-4 py-3 text-sm outline-none transition focus:border-gold" />
-            <button type="submit" className="rounded-full bg-navy px-5 py-3 text-sm font-bold text-white">Add</button>
-          </form>
-        </div>
-        {subCategoryMessage ? <p className="mt-4 text-sm font-semibold text-charcoal/70">{subCategoryMessage}</p> : null}
-        <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-          {subCategories.map((entry) => (
-            <article key={entry.id} className="rounded-2xl border border-navy/10 bg-ivory p-4">
-              {editingSubCategoryId === entry.id ? (
-                <div className="grid gap-3">
-                  <select value={subCategoryEditParent} onChange={(event) => setSubCategoryEditParent(event.target.value)} className="rounded-xl border border-navy/10 bg-white px-3 py-2 text-sm outline-none focus:border-gold">
-                    {parentCategoryNames.map((option) => <option key={option} value={option}>{option}</option>)}
-                  </select>
-                  <input value={subCategoryEditName} onChange={(event) => setSubCategoryEditName(event.target.value)} className="rounded-xl border border-navy/10 bg-white px-3 py-2 text-sm outline-none focus:border-gold" />
-                  <div className="flex gap-2">
-                    <button type="button" onClick={() => saveSubCategory(entry)} className="rounded-full bg-navy px-4 py-2 text-xs font-bold text-white">Save</button>
-                    <button type="button" onClick={cancelSubCategoryEdit} className="rounded-full bg-white px-4 py-2 text-xs font-bold text-navy">Cancel</button>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold">{entry.category}</p>
-                  <h3 className="mt-1 font-bold text-navy">{entry.name}</h3>
-                  <p className={entry.active ? "mt-1 text-xs font-bold text-emerald-700" : "mt-1 text-xs font-bold text-red-700"}>{entry.active ? "Active" : "Disabled"}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    <button type="button" onClick={() => startSubCategoryEdit(entry)} className="rounded-full bg-white px-4 py-2 text-xs font-bold text-navy">Edit</button>
-                    <button type="button" onClick={() => toggleSubCategory(entry)} className="rounded-full bg-white px-4 py-2 text-xs font-bold text-navy">{entry.active ? "Disable" : "Enable"}</button>
-                  </div>
-                </>
-              )}
-            </article>
-          ))}
-        </div>
-      </section>
+      {/* Subcategory management section removed */}
 
       <section className="rounded-2xl border border-navy/10 bg-white p-6 shadow-card">
         <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
@@ -593,7 +427,6 @@ export function MediaManager() {
               <div className="p-5">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold">{item.category}</p>
                 <h3 className="mt-2 text-lg font-bold text-navy">{item.title}</h3>
-                <p className="mt-1 text-sm font-semibold text-charcoal/60">{item.subCategory}</p>
                 <p className="mt-2 text-xs text-charcoal/55">Uploaded {new Date(item.uploadedAt).toLocaleDateString()}</p>
                 <div className="mt-4 flex gap-2">
                   <button type="button" onClick={() => openEdit(item)} className="rounded-full bg-white px-4 py-2 text-xs font-bold text-navy">Edit</button>
@@ -622,12 +455,6 @@ export function MediaManager() {
                 Category
                 <select value={editForm.category} onChange={(event) => handleEditCategoryChange(event.target.value)} className="rounded-xl border border-navy/10 bg-ivory px-4 py-3 font-normal outline-none focus:border-gold">
                   {editCategoryOptions.map((option) => <option key={option} value={option}>{option}</option>)}
-                </select>
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-navy">
-                Subcategory
-                <select value={editForm.subCategory} onChange={(event) => setEditForm({ ...editForm, subCategory: event.target.value })} className="rounded-xl border border-navy/10 bg-ivory px-4 py-3 font-normal outline-none focus:border-gold">
-                  {editSubCategoryOptions.map((option) => <option key={option} value={option}>{option}</option>)}
                 </select>
               </label>
               <Button type="submit">Save Changes</Button>

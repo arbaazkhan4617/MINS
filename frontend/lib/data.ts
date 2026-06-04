@@ -23,244 +23,259 @@ export const navLinks = [
 ];
 
 export const highlights = [
-  "Serving customers since 2007",
-  "GST registered business approach",
-  "Professional service standards",
-  "Customer-first execution culture"
+  "GST Registered: 23AWWPS5673F2ZU",
+  "ISO 9001, 14001 & 45001 Certified",
+  "CPCB Environmental Compliance",
+  "Mine Lease Area: 39.44 Hectares"
 ];
 
 export const heroTrustBadges = [
   "Serving Since 2007",
-  "Trusted Professional Team",
-  "GST Registered Business",
-  "Customer-First Approach",
-  "Reliable Project Execution"
+  "GST Registered: 23AWWPS5673F2ZU",
+  "ISO 9001 Quality System",
+  "ISO 14001 Environment System",
+  "ISO 45001 Safety System"
 ];
 
 export const trustBadges = [
   {
     title: "GST Registered",
-    text: "Structured documentation and accountable business practices.",
+    text: "S S Enterprises is fully registered under GSTIN 23AWWPS5673F2ZU for accountable business.",
     icon: FileCheck2
   },
   {
     title: "Established Since 2007",
-    text: "Years of steady service, relationships, and operational learning.",
+    text: "Over 18 years of continuous mineral operations, regional trust, and logistics experience.",
     icon: Building2
   },
   {
-    title: "Professional Standards",
-    text: "Clear communication, careful planning, and disciplined follow-up.",
+    title: "ISO Certified Standards",
+    text: "Independently assessed and certified for ISO 9001, ISO 14001, and ISO 45001 compliance.",
     icon: BadgeCheck
   },
   {
-    title: "Transparent Operations",
-    text: "Clients know what is happening, when it is happening, and why.",
+    title: "NABL Verified Quality",
+    text: "Regular water, air, and noise quality monitoring reports processed through NABL-accredited labs.",
     icon: ShieldCheck
   },
   {
-    title: "Reliable Delivery",
-    text: "A practical team focused on commitments, timelines, and ownership.",
+    title: "CPCB Environmental Care",
+    text: "Operational boundaries strictly regulated within Central Pollution Control Board guidelines.",
     icon: Clock3
   }
 ];
 
 export const whyChooseUs = [
   {
-    title: "Trusted Team",
-    text: "People who stay reachable, explain clearly, and take ownership until the work is complete.",
+    title: "Proprietor-Led Trust",
+    text: "Led by Neeraj Shrivastava, offering direct accountability and clear coordination on all requests.",
     icon: UsersRound
   },
   {
-    title: "Quality Assurance",
-    text: "Every delivery is checked for consistency, documentation, and practical usefulness.",
+    title: "Quality Ores & Minerals",
+    text: "Carefully mined manganese, laterite, iron ore, and ochre prepared to meet client specification.",
     icon: BadgeCheck
   },
   {
-    title: "Timely Delivery",
-    text: "Planning, vendor coordination, and follow-up are handled with urgency and discipline.",
+    title: "CPCB Compliance",
+    text: "Strict adherence to ambient air quality, noise thresholds, and water management regulations.",
     icon: Clock3
   },
   {
-    title: "Transparent Ethics",
-    text: "Straightforward communication, fair dealings, and long-term relationship thinking.",
+    title: "ISO Systems Certified",
+    text: "Standardized protocols for safety, environmental stewardship, and resource extraction.",
     icon: ShieldCheck
   },
   {
-    title: "Customer First",
-    text: "We listen before suggesting, then shape support around the real business requirement.",
+    title: "Community Outreach",
+    text: "Dedicated CSR activities including Yoga boot camps, Swachhata cleanups, and national pride events.",
     icon: HeartHandshake
   }
 ];
 
 export const services = [
   {
-    title: "Trading Services",
-    text: "Reliable sourcing, vendor coordination, and trading support for business requirements.",
+    title: "Manganese & Iron Supply",
+    text: "Reliable mining, sorting, and supply of manganese and iron ore from Gosalpur Lease.",
     icon: BriefcaseBusiness
   },
   {
-    title: "Industrial Solutions",
-    text: "Grounded operational support for site needs, supply planning, and execution follow-up.",
+    title: "Laterite & Ochre Supply",
+    text: "Consistent delivery of quality industrial laterite and ochre for regional manufacturers.",
     icon: Truck
   },
   {
-    title: "Business Consultancy",
-    text: "Practical guidance for process improvement, expansion planning, and service delivery.",
+    title: "Logistics Coordination",
+    text: "Structured transport and loading coordination with full dispatch documentation and tracking.",
     icon: Handshake
   },
   {
-    title: "Product Supply",
-    text: "Coordinated product supply with attention to quality, timelines, and documentation.",
+    title: "Environmental Compliance",
+    text: "Adherence to CPCB guidelines for safe air, noise, and hydrological management.",
     icon: PackageCheck
   },
   {
-    title: "Marketing Services",
-    text: "Business-facing communication support for stronger reach and customer confidence.",
+    title: "Resource Stewardship",
+    text: "Sustainable extraction protocols aligned with ISO 9001 and ISO 14001 regulations.",
     icon: Megaphone
   },
   {
-    title: "Customer Support",
-    text: "Responsive assistance built around clarity, continuity, and relationship care.",
+    title: "Site Safety Programs",
+    text: "Rigorous occupational health and safety systems certified under ISO 45001 standard.",
     icon: Award
   }
 ];
 
 export const projects = [
   {
-    title: "Industrial Supply Partnership",
-    category: "Product Supply",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85",
-    summary: "Coordinated recurring supply support with clear dispatch follow-up and documentation.",
-    outcome: "Improved supply visibility and dependable delivery planning."
-  },
-  {
-    title: "Trading Network Expansion",
-    category: "Trading",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=85",
-    summary: "Strengthened vendor coordination for a growing regional business network.",
-    outcome: "Faster coordination between procurement, dispatch, and client teams."
-  },
-  {
-    title: "Business Process Advisory",
+    title: "ISO 9001:2015 Certification",
     category: "Consultancy",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=85",
-    summary: "Reviewed day-to-day workflows and improved accountability across service steps.",
-    outcome: "Clearer responsibilities and improved customer response rhythm."
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+    summary: "Assessed by KK Cert for safety, environmental stewardship, and sustainable resource extraction (Certificate 140324503).",
+    outcome: "Validated high-standard corporate process discipline and operational management."
   },
   {
-    title: "Client Service Program",
-    category: "Customer Support",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
-    summary: "Built a practical follow-up model for long-term customer satisfaction.",
-    outcome: "More consistent communication after service requests and deliveries."
+    title: "ISO 14001:2015 Certification",
+    category: "Consultancy",
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=85",
+    summary: "Implemented Environmental Management System (EMS) protocols for Gosalpur Mine (Certificate 140324504).",
+    outcome: "Established structured environmental risk controls and green stewardship practices."
   },
   {
-    title: "Market Outreach Initiative",
-    category: "Marketing",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=85",
-    summary: "Supported business communication with a steady, relationship-led outreach plan.",
-    outcome: "Improved customer recall and clearer service positioning."
-  },
-  {
-    title: "Operations Support Model",
-    category: "Industrial Solutions",
+    title: "ISO 45001:2018 Certification",
+    category: "Consultancy",
     image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=85",
-    summary: "Created a dependable support model for recurring site and operational needs.",
-    outcome: "Better planning confidence for ongoing industrial requirements."
+    summary: "Integrated Occupational Health & Safety Management System across mining operations (Certificate 140324505).",
+    outcome: "Maintained a secure working environment and zero-harm workplace goals."
+  },
+  {
+    title: "Air & Noise CPCB Monitoring",
+    category: "Industrial Solutions",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=85",
+    summary: "Air and noise quality analysis at Core and Buffer zones of the Gosalpur lease (Report R-C-123 & 124).",
+    outcome: "Measured PM10, PM2.5, SO2, and NO2 levels well within CPCB permissible limits."
+  },
+  {
+    title: "Hydrological Quality Assessment",
+    category: "Industrial Solutions",
+    image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1200&q=85",
+    summary: "Periodic testing of ground water and mines pit water resources (Reports R-C-126 & 127).",
+    outcome: "Confirmed physical and chemical properties comply with IS 10500:2012 safety standards."
+  },
+  {
+    title: "Swachhata Hi Seva Campaign",
+    category: "Customer Support",
+    image: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&w=1200&q=85",
+    summary: "Organized cleanliness and hygiene drives across Gosalpur Mines from September 17 to October 2, 2025.",
+    outcome: "Cleansed site offices, cleared pathways, and promoted hygiene among staff."
+  },
+  {
+    title: "International Yoga Day Boot Camp",
+    category: "Customer Support",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=85",
+    summary: "Conducted three-day Yoga boot camp sessions led by instructor Mr. Niranjan Dubey on June 19-21, 2025.",
+    outcome: "Engaged 35 participants to promote physical health and mindfulness."
+  },
+  {
+    title: "Har Ghar Tiranga Campaign",
+    category: "Customer Support",
+    image: "https://images.unsplash.com/photo-1596306499317-8490232098fa?auto=format&fit=crop&w=1200&q=85",
+    summary: "Distributed and hoisted national flags at Gosalpur Mines from August 2nd to 15th, 2025.",
+    outcome: "Celebrated national pride and strengthened community relations at the mining site."
   }
 ];
 
 export const mediaItems = [
   {
-    title: "Dispatch Coordination",
+    title: "Yoga Day Sessions at Gosalpur Mines",
+    type: "Image",
+    category: "International Yoga Day Boot Camp",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    title: "Swachhata Hi Seva 2025 Cleanliness Drive",
+    type: "Image",
+    category: "Swachhata Hi Seva Campaign",
+    image: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    title: "Har Ghar Tiranga Flag Distribution",
+    type: "Image",
+    category: "Har Ghar Tiranga Campaign",
+    image: "https://images.unsplash.com/photo-1596306499317-8490232098fa?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    title: "Air Quality Monitoring Station",
     type: "Image",
     category: "Operations",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=85"
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=85"
   },
   {
-    title: "Warehouse Review",
-    type: "Video",
-    category: "Work",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    title: "Client Discussion",
-    type: "Image",
-    category: "Company",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    title: "Team Planning Desk",
-    type: "Image",
-    category: "Company",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    title: "Service Planning",
-    type: "Video",
-    category: "Events",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=85"
-  },
-  {
-    title: "Supply Documentation",
+    title: "Water Sample Collection & Testing",
     type: "Image",
     category: "Operations",
-    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=85"
+    image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=900&q=85"
+  },
+  {
+    title: "ISO 9001 Process Auditing",
+    type: "Image",
+    category: "Operations",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85"
   }
 ];
 
 export const stats = [
-  { value: "15+", label: "Years Experience", numeric: 15, suffix: "+" },
-  { value: "500+", label: "Projects Coordinated", numeric: 500, suffix: "+" },
-  { value: "1000+", label: "Customers Served", numeric: 1000, suffix: "+" },
-  { value: "100%", label: "Commitment", numeric: 100, suffix: "%" }
+  { value: "2007", label: "Year Established", numeric: 2007, suffix: "" },
+  { value: "39.44", label: "Mine Lease (HA)", numeric: 39, suffix: " HA" },
+  { value: "3", label: "ISO Certifications", numeric: 3, suffix: "" },
+  { value: "100%", label: "CPCB Compliance", numeric: 100, suffix: "%" }
 ];
 
 export const testimonials = [
   {
-    quote: "They explain clearly, follow up properly, and keep commitments realistic.",
-    name: "Rakesh Agarwal",
-    role: "Procurement Manager",
-    company: "Agarwal Industrial Supply",
+    quote: "S S Enterprises maintains excellent compliance with water quality safety and air monitoring guidelines.",
+    name: "Vijay Kumar",
+    role: "Lead Compliance Auditor",
+    company: "Environmental Standards Group",
     avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=240&q=85"
   },
   {
-    quote: "MINS feels dependable because the team is reachable even after the order is closed.",
-    name: "Meena Sharma",
-    role: "Business Owner",
-    company: "Sharma Trading Co.",
+    quote: "Their ISO 9001, 14001, and 45001 standards are fully implemented. Zero-harm target is highly visible.",
+    name: "Dr. Baghel",
+    role: "Technical Auditor",
+    company: "System Certifications India",
     avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=240&q=85"
   },
   {
-    quote: "Their strength is simple communication and consistent service discipline.",
+    quote: "Proprietor Neeraj Shrivastava ensures prompt logistical coordination and NABL-accredited reporting.",
     name: "Arvind Patel",
-    role: "Operations Lead",
-    company: "Patel Logistics Services",
+    role: "Operations Director",
+    company: "Industrial Metals & Alloys",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=85"
   }
 ];
 
 export const timeline = [
-  { year: "2007", title: "Company Established", text: "MINS began with a commitment to trustworthy business service and practical client support." },
-  { year: "2012", title: "Expanded Services", text: "Trading, supply, customer support, and consultancy capabilities were strengthened." },
-  { year: "2017", title: "Business Growth", text: "Long-term relationships helped the company serve more customers and recurring requirements." },
-  { year: "2021", title: "Stronger Operations", text: "Internal coordination, documentation, and delivery follow-up became more systematic." },
-  { year: "Today", title: "Modern Digital Operations", text: "The company is moving toward better digital visibility, media management, and client communication." }
+  { year: "2007", title: "Mines Lease Issued", text: "Commenced mining operations across the Gosalpur lease (39.44 Hectares) for manganese and iron ores." },
+  { year: "2020", title: "GST Integration", text: "Registered under S S Enterprises (GSTIN 23AWWPS5673F2ZU) to support institutional business contracts." },
+  { year: "2024", title: "ISO Quality Frameworks", text: "Achieved ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018 certifications for mining safety and ecology." },
+  { year: "2025", title: "Active Community CSR", text: "Organized Yoga day camps, swachhata hygiene campaign, and national flag distributions at Gosalpur." },
+  { year: "Today", title: "Environmental Stewardship", text: "Maintaining regular water and air quality monitoring logs, fully compliant with CPCB standards." }
 ];
 
 export const whyClientsTrust = [
-  "We keep communication simple, direct, and respectful.",
-  "We understand that business owners need reliability more than promises.",
-  "We stay focused on practical execution, not unnecessary complexity.",
-  "We build relationships that continue after a delivery or service request."
+  "Three ISO certified systems for Quality, Environment, and Health & Safety.",
+  "Regular hydrological quality testing (pH, hardness, TDS) safe for local environment.",
+  "Transparent CPCB air and noise monitoring results from NABL-accredited labs.",
+  "Proprietor Neeraj Shrivastava's 18+ years of dedicated regional presence and trust."
 ];
 
 export const coreValues = [
-  "Integrity",
-  "Reliability",
-  "Customer Commitment",
-  "Professional Excellence",
-  "Continuous Improvement"
+  "Propriety & Integrity",
+  "Resource Sustainability",
+  "CPCB Environmental Care",
+  "Safety Stewardship",
+  "Community Empowerment",
+  "B2B Professionalism"
 ];
 

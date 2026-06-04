@@ -38,12 +38,12 @@ public class MediaService {
 
         List<MediaItem> mediaItems = new ArrayList<>();
         Instant now = Instant.now();
-        mediaItems.add(new MediaItem("Dispatch Coordination", resolveSubCategory("Operations", "Dispatch Coordination"), "Image", "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=85", now));
-        mediaItems.add(new MediaItem("Warehouse Review", resolveSubCategory("Work", "Warehouse Review"), "Video", "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=85", now.minusSeconds(60)));
-        mediaItems.add(new MediaItem("Client Discussion", resolveSubCategory("Company", "Client Discussion"), "Image", "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=85", now.minusSeconds(120)));
-        mediaItems.add(new MediaItem("Team Planning Desk", resolveSubCategory("Company", "Team Planning Desk"), "Image", "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=85", now.minusSeconds(180)));
-        mediaItems.add(new MediaItem("Service Planning", resolveSubCategory("Events", "Service Planning"), "Video", "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=85", now.minusSeconds(240)));
-        mediaItems.add(new MediaItem("Supply Documentation", resolveSubCategory("Operations", "Supply Documentation"), "Image", "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=85", now.minusSeconds(300)));
+        mediaItems.add(new MediaItem("Yoga Day Sessions at Gosalpur Mines", resolveSubCategory("International Yoga Day Boot Camp", "International Yoga Day Boot Camp"), "Image", "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=85", now));
+        mediaItems.add(new MediaItem("Swachhata Hi Seva 2025 Cleanliness Drive", resolveSubCategory("Swachhata Hi Seva Campaign", "Swachhata Hi Seva Campaign"), "Image", "https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&w=900&q=85", now.minusSeconds(60)));
+        mediaItems.add(new MediaItem("Har Ghar Tiranga Flag Distribution", resolveSubCategory("Har Ghar Tiranga Campaign", "Har Ghar Tiranga Campaign"), "Image", "https://images.unsplash.com/photo-1596306499317-8490232098fa?auto=format&fit=crop&w=900&q=85", now.minusSeconds(120)));
+        mediaItems.add(new MediaItem("Air Quality Monitoring Station", resolveSubCategory("Operations", "Operations"), "Image", "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=85", now.minusSeconds(180)));
+        mediaItems.add(new MediaItem("Water Sample Collection & Testing", resolveSubCategory("Operations", "Operations"), "Image", "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=900&q=85", now.minusSeconds(240)));
+        mediaItems.add(new MediaItem("ISO 9001 Process Auditing", resolveSubCategory("Operations", "Operations"), "Image", "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85", now.minusSeconds(300)));
         mediaRepository.saveAll(mediaItems);
     }
 

@@ -15,12 +15,10 @@ public class MediaSubCategoryService {
     }
 
     private static final List<DefaultSubCategory> DEFAULT_SUB_CATEGORIES = List.of(
-            new DefaultSubCategory("Operations", "Dispatch Coordination"),
-            new DefaultSubCategory("Operations", "Supply Documentation"),
-            new DefaultSubCategory("Work", "Warehouse Review"),
-            new DefaultSubCategory("Company", "Client Discussion"),
-            new DefaultSubCategory("Company", "Team Planning Desk"),
-            new DefaultSubCategory("Events", "Service Planning")
+            new DefaultSubCategory("Operations", "Operations"),
+            new DefaultSubCategory("Swachhata Hi Seva Campaign", "Swachhata Hi Seva Campaign"),
+            new DefaultSubCategory("International Yoga Day Boot Camp", "International Yoga Day Boot Camp"),
+            new DefaultSubCategory("Har Ghar Tiranga Campaign", "Har Ghar Tiranga Campaign")
     );
 
     private final MediaSubCategoryRepository subCategoryRepository;
