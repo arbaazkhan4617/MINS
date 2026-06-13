@@ -22,7 +22,7 @@ spring:
 app:
   admin:
     email: ${ADMIN_EMAIL:admin@mins.in}
-    password-hash: '${ADMIN_PASSWORD_HASH:$2a$10$jnw6NnLCU6FEd65vGQa./O3BRf9cSBWovye3Yg/U94PgLi9XPX0Au}'
+    password-hash: '${ADMIN_PASSWORD_HASH:$2a$10$GmbRwx6Sldq4mnsqs8eor.ij9FRfo80oREn536tOOyml8g8JLYiZO}'
   uploads:
     directory: uploads
   jwt:

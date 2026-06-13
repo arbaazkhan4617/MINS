@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
+  Briefcase,
   FileImage,
   FolderKanban,
   Home,
@@ -23,6 +24,7 @@ const adminLinks = [
   { href: "/admin/projects", label: "Projects", icon: FolderKanban },
   { href: "/admin/clients", label: "Clients", icon: UsersRound },
   { href: "/admin/queries", label: "Enquiries", icon: Inbox },
+  { href: "/admin/careers", label: "Careers", icon: Briefcase },
   { href: "/admin/content", label: "Homepage Content", icon: Settings },
   { href: "/admin/settings", label: "Site Settings", icon: Settings }
 ];
