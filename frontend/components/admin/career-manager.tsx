@@ -97,7 +97,7 @@ export function CareerManager() {
       ) : null}
 
       <div className="mt-6 max-h-[620px] overflow-auto rounded-2xl border border-navy/10">
-        <div className="hidden min-w-[1100px] grid-cols-[0.8fr_0.9fr_0.8fr_0.9fr_1.3fr_0.75fr_0.75fr_0.8fr] bg-ivory px-5 py-4 text-xs font-bold uppercase tracking-[0.18em] text-charcoal/55 lg:grid">
+        <div className="hidden grid-cols-[0.7fr_1.2fr_0.9fr_1fr_1.5fr_0.8fr_0.8fr_1.1fr] bg-ivory px-5 py-4 text-xs font-bold uppercase tracking-[0.18em] text-charcoal/55 lg:grid">
           <span>Name</span>
           <span>Email</span>
           <span>Phone</span>
@@ -111,17 +111,25 @@ export function CareerManager() {
         {filteredApplications.map((app) => (
           <div
             key={app.id}
-            className="grid gap-3 border-t border-navy/10 px-5 py-4 text-sm text-charcoal/70 lg:min-w-[1100px] lg:grid-cols-[0.8fr_0.9fr_0.8fr_0.9fr_1.3fr_0.75fr_0.75fr_0.8fr]"
+            className="grid gap-3 border-t border-navy/10 px-5 py-4 text-sm text-charcoal/70 lg:grid-cols-[0.7fr_1.2fr_0.9fr_1fr_1.5fr_0.8fr_0.8fr_1.1fr]"
           >
-            <strong className="text-navy">{app.name}</strong>
-            <a href={`mailto:${app.email}`} className="break-all hover:text-navy">
+            <strong className="truncate block text-navy" title={app.name}>{app.name}</strong>
+            <a
+              href={`mailto:${app.email}`}
+              className="truncate block hover:text-navy"
+              title={app.email}
+            >
               {app.email}
             </a>
-            <a href={`tel:${app.phone}`} className="hover:text-navy">
+            <a href={`tel:${app.phone}`} className="truncate block hover:text-navy" title={app.phone}>
               {app.phone}
             </a>
-            <span className="font-semibold text-navy/80">{app.position}</span>
-            <span className="leading-6">{app.message}</span>
+            <span className="truncate block font-semibold text-navy/80" title={app.position}>
+              {app.position}
+            </span>
+            <span className="truncate block leading-6" title={app.message}>
+              {app.message}
+            </span>
             <div>
               <a
                 href={resolveApiUrl(app.resumeUrl)}
@@ -137,7 +145,7 @@ export function CareerManager() {
             <select
               value={app.status}
               onChange={(event) => handleStatusChange(app.id, event.target.value)}
-              className="w-fit rounded-full border border-navy/10 bg-ivory px-3 py-2 text-xs font-bold text-navy outline-none"
+              className="w-fit rounded-full border border-navy/10 bg-ivory px-2 py-1.5 text-xs font-bold text-navy outline-none"
             >
               {statusOptions.map((status) => (
                 <option key={status} value={status}>
