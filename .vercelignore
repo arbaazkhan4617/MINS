@@ -1,0 +1,9 @@
+backend/
+node_modules/
+.next/
+dist/
+target/
+uploads/
+*.log
+.DS_Store
+.git/

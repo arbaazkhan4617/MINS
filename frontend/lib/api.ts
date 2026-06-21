@@ -1,5 +1,5 @@
-export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
+const base = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://3.109.216.5:8080/mins/api/";
+export const API_BASE_URL = base.replace(/\/api\/?$/, "").replace(/\/$/, "");
 
 export const API_TUNNEL_HEADERS = {
   "bypass-tunnel-reminder": "true"
