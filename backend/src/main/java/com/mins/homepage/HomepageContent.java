@@ -44,6 +44,9 @@ public class HomepageContent {
     @Column(nullable = false)
     private Instant updatedAt;
 
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String heroSlidesJson;
+
     protected HomepageContent() {
     }
 
@@ -155,5 +158,13 @@ public class HomepageContent {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getHeroSlidesJson() {
+        return heroSlidesJson;
+    }
+
+    public void setHeroSlidesJson(String heroSlidesJson) {
+        this.heroSlidesJson = heroSlidesJson;
     }
 }

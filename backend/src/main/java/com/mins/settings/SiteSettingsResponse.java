@@ -23,6 +23,18 @@ public record SiteSettingsResponse(
         String gstin,
         String proprietor,
         String mineSiteAddress,
+        String whyChooseUsJson,
+        String coreValuesJson,
+        String servicesJson,
+        String futureGoalsJson,
+        String strengthText,
+        String commitmentText,
+        String productsJson,
+        String technicalSpecsJson,
+        String safetyGuidelinesJson,
+        String supplyTermsJson,
+        String assetAllocationsJson,
+        String registeredOfficeJson,
         String updatedAt
 ) {
 }

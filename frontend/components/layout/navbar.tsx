@@ -27,10 +27,10 @@ export function Navbar() {
             <img
               src={resolveApiUrl(settings.logoUrl)}
               alt={settings.companyName}
-              className="h-11 w-11 rounded-full object-cover"
+              className="h-20 w-20 rounded-lg object-contain"
             />
           ) : (
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy font-display text-lg font-bold text-white">
+            <span className="flex h-14 w-14 items-center justify-center rounded-lg bg-navy font-display text-xl font-bold text-white">
               {settings.companyName.charAt(0)}
             </span>
           )}
@@ -60,7 +60,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden lg:block">
-          <Button href="/contact">Contact Us</Button>
+          <Button href="/procurement">Global Procurement</Button>
         </div>
 
         <button
@@ -86,8 +86,8 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Button href="/contact" className="mt-2">
-              Contact Us
+            <Button href="/procurement" className="mt-2">
+              Global Procurement
             </Button>
           </div>
         </div>

@@ -80,6 +80,42 @@ public class SiteSettings {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String mineSiteAddress;
 
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String whyChooseUsJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String coreValuesJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String servicesJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String futureGoalsJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String strengthText;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String commitmentText;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String productsJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String technicalSpecsJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String safetyGuidelinesJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String supplyTermsJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String assetAllocationsJson;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String registeredOfficeJson;
+
     @Column(nullable = false, length = 1000)
     private String updatedAt;
 
@@ -268,6 +304,102 @@ public class SiteSettings {
 
     public void setMineSiteAddress(String mineSiteAddress) {
         this.mineSiteAddress = mineSiteAddress;
+    }
+
+    public String getWhyChooseUsJson() {
+        return whyChooseUsJson;
+    }
+
+    public void setWhyChooseUsJson(String whyChooseUsJson) {
+        this.whyChooseUsJson = whyChooseUsJson;
+    }
+
+    public String getCoreValuesJson() {
+        return coreValuesJson;
+    }
+
+    public void setCoreValuesJson(String coreValuesJson) {
+        this.coreValuesJson = coreValuesJson;
+    }
+
+    public String getServicesJson() {
+        return servicesJson;
+    }
+
+    public void setServicesJson(String servicesJson) {
+        this.servicesJson = servicesJson;
+    }
+
+    public String getFutureGoalsJson() {
+        return futureGoalsJson;
+    }
+
+    public void setFutureGoalsJson(String futureGoalsJson) {
+        this.futureGoalsJson = futureGoalsJson;
+    }
+
+    public String getStrengthText() {
+        return strengthText;
+    }
+
+    public void setStrengthText(String strengthText) {
+        this.strengthText = strengthText;
+    }
+
+    public String getCommitmentText() {
+        return commitmentText;
+    }
+
+    public void setCommitmentText(String commitmentText) {
+        this.commitmentText = commitmentText;
+    }
+
+    public String getProductsJson() {
+        return productsJson;
+    }
+
+    public void setProductsJson(String productsJson) {
+        this.productsJson = productsJson;
+    }
+
+    public String getTechnicalSpecsJson() {
+        return technicalSpecsJson;
+    }
+
+    public void setTechnicalSpecsJson(String technicalSpecsJson) {
+        this.technicalSpecsJson = technicalSpecsJson;
+    }
+
+    public String getSafetyGuidelinesJson() {
+        return safetyGuidelinesJson;
+    }
+
+    public void setSafetyGuidelinesJson(String safetyGuidelinesJson) {
+        this.safetyGuidelinesJson = safetyGuidelinesJson;
+    }
+
+    public String getSupplyTermsJson() {
+        return supplyTermsJson;
+    }
+
+    public void setSupplyTermsJson(String supplyTermsJson) {
+        this.supplyTermsJson = supplyTermsJson;
+    }
+
+    public String getAssetAllocationsJson() {
+        return assetAllocationsJson;
+    }
+
+    public void setAssetAllocationsJson(String assetAllocationsJson) {
+        this.assetAllocationsJson = assetAllocationsJson;
+    }
+
+    public String getRegisteredOfficeJson() {
+        return registeredOfficeJson;
+    }
+
+    public void setRegisteredOfficeJson(String registeredOfficeJson) {
+        this.registeredOfficeJson = registeredOfficeJson;
     }
 
     public String getUpdatedAt() {

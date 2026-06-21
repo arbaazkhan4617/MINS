@@ -22,8 +22,20 @@ public record SiteSettingsRequest(
         @NotBlank String aboutContent,
         @NotBlank String aboutImageUrl,
         @NotBlank String directorMessage,
-        @NotBlank String gstin,
-        @NotBlank String proprietor,
-        @NotBlank String mineSiteAddress
+        String gstin,
+        String proprietor,
+        @NotBlank String mineSiteAddress,
+        @NotBlank String whyChooseUsJson,
+        @NotBlank String coreValuesJson,
+        @NotBlank String servicesJson,
+        @NotBlank String futureGoalsJson,
+        @NotBlank String strengthText,
+        @NotBlank String commitmentText,
+        @NotBlank String productsJson,
+        @NotBlank String technicalSpecsJson,
+        @NotBlank String safetyGuidelinesJson,
+        @NotBlank String supplyTermsJson,
+        @NotBlank String assetAllocationsJson,
+        @NotBlank String registeredOfficeJson
 ) {
 }

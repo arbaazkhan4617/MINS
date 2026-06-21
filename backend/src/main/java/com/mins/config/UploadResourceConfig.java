@@ -19,7 +19,7 @@ public class UploadResourceConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/uploads/**")
+                .addResourceHandler("/mines_upload/**")
                 .addResourceLocations(uploadDirectory.toUri().toString());
     }
 }

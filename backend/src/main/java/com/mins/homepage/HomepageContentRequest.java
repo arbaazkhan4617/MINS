@@ -11,6 +11,7 @@ public record HomepageContentRequest(
         @NotBlank String heroMediaSrc,
         @NotBlank String heroMediaType,
         @NotBlank String ctaTitle,
-        @Size(min = 4, max = 4) List<@NotBlank String> stats
+        @Size(min = 4, max = 4) List<@NotBlank String> stats,
+        @NotBlank String heroSlidesJson
 ) {
 }

@@ -104,12 +104,20 @@ export default function AboutPage() {
               title="Values that keep business relationships strong."
             />
             <div className="mt-8 grid gap-4">
-              {coreValues.map((value) => (
-                <div key={value} className="flex items-center gap-3 rounded-2xl border border-navy/10 bg-ivory p-4">
-                  <CheckCircle2 className="text-gold" size={20} />
-                  <span className="font-semibold text-charcoal/75">{value}</span>
-                </div>
-              ))}
+              {(() => {
+                let values: string[] = [];
+                try {
+                  values = JSON.parse(settings.coreValuesJson);
+                } catch {
+                  values = [];
+                }
+                return values.map((value) => (
+                  <div key={value} className="flex items-center gap-3 rounded-2xl border border-navy/10 bg-ivory p-4">
+                    <CheckCircle2 className="text-gold" size={20} />
+                    <span className="font-semibold text-charcoal/75">{value}</span>
+                  </div>
+                ));
+              })()}
             </div>
           </MotionReveal>
 
@@ -130,17 +138,42 @@ export default function AboutPage() {
 
       <section className="bg-ivory py-20 sm:py-28">
         <div className="container-wide">
-          <MotionReveal>
-            <SectionHeading align="center" eyebrow="Company Strength" title="Practical strengths for dependable delivery." />
-          </MotionReveal>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {strengths.map((strength, index) => (
-              <MotionReveal key={strength} delay={index * 0.04}>
-                <div className="rounded-2xl bg-white p-6 text-sm font-semibold leading-7 text-charcoal/72 shadow-card">
-                  {strength}
+          <div className="grid gap-12 lg:grid-cols-2">
+            <MotionReveal>
+              <SectionHeading eyebrow="Company Strength" title="Rooted in practical execution." />
+              <div className="mt-6 rounded-2xl bg-white p-6 leading-8 text-charcoal/80 shadow-card">
+                <p className="text-base font-semibold">{settings.strengthText}</p>
+              </div>
+
+              <div className="mt-10">
+                <SectionHeading eyebrow="Commitment" title="Reliability & Service Excellence" />
+                <div className="mt-6 rounded-2xl bg-white p-6 leading-8 text-charcoal/80 shadow-card">
+                  <p className="text-base font-semibold">{settings.commitmentText}</p>
                 </div>
-              </MotionReveal>
-            ))}
+              </div>
+            </MotionReveal>
+
+            <MotionReveal delay={0.12}>
+              <SectionHeading eyebrow="Future Goals" title="Where we are headed next." />
+              <div className="mt-6 grid gap-4">
+                {(() => {
+                  let goals: string[] = [];
+                  try {
+                    goals = JSON.parse(settings.futureGoalsJson);
+                  } catch {
+                    goals = [];
+                  }
+                  return goals.map((goal, index) => (
+                    <div key={goal} className="flex gap-4 rounded-2xl bg-white p-5 shadow-card">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-mist font-bold text-gold">
+                        {index + 1}
+                      </span>
+                      <p className="text-base font-semibold leading-7 text-charcoal/80">{goal}</p>
+                    </div>
+                  ));
+                })()}
+              </div>
+            </MotionReveal>
           </div>
         </div>
       </section>

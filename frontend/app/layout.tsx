@@ -18,13 +18,13 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mins.example"),
   title: {
-    default: "MINS | Building Trust Since 2007",
+    default: "MINES | Building Trust Since 2007",
     template: "%s | MINS"
   },
   description:
-    "MINS is a trusted company delivering quality services with professionalism, commitment, and customer-first business values since 2007.",
+    "MINES is a trusted company delivering quality services with professionalism, commitment, and customer-first business values since 2007.",
   keywords: [
-    "MINS",
+    "MINSE",
     "corporate services",
     "trading services",
     "industrial solutions",
@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     "product supply"
   ],
   openGraph: {
-    title: "MINS | Building Trust Since 2007",
+    title: "MINES | Building Trust Since 2007",
     description:
       "Trusted company delivering quality services with professionalism and commitment.",
     url: "https://mins.example",
-    siteName: "MINS",
+    siteName: "MINES",
     type: "website"
   }
 };

@@ -69,10 +69,12 @@ export function Footer() {
               <Mail size={18} className="shrink-0 text-gold" />
               {settings.email}
             </a>
-            <div className="text-xs text-charcoal/50 pt-2 border-t border-navy/5 leading-5">
-              GSTIN: {settings.gstin}<br />
-              Proprietor: {settings.proprietor}
-            </div>
+            {(settings.gstin || settings.proprietor) && (
+              <div className="text-xs text-charcoal/50 pt-2 border-t border-navy/5 leading-5">
+                {settings.gstin && <>GSTIN: {settings.gstin}<br /></>}
+                {settings.proprietor && <>Proprietor: {settings.proprietor}</>}
+              </div>
+            )}
           </div>
         </div>
 

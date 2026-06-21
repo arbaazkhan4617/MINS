@@ -7,6 +7,7 @@ export type HomepageContent = {
   heroMediaType: "image" | "video";
   ctaTitle: string;
   stats: [string, string, string, string];
+  heroSlidesJson: string;
 };
 
 type HomepageMediaUploadResponse = {
@@ -26,7 +27,20 @@ export const defaultHomepageContent: HomepageContent = {
   heroMediaSrc: defaultHeroMediaSrc,
   heroMediaType: "image",
   ctaTitle: "Ready to discuss your next business requirement?",
-  stats: ["2007", "39.44 HA", "3 ISOs", "100% CPCB"]
+  stats: ["2007", "39.44 HA", "3 ISOs", "100% CPCB"],
+  heroSlidesJson: JSON.stringify([
+    {
+      mediaSrc: defaultHeroMediaSrc,
+      mediaType: "image",
+      headline: "Building Trust Since 2007",
+      subheading: "ISO 9001, 14001, and 45001 certified manganese, laterite, iron ore, and ochre mining operations at Gosalpur.",
+      badge: "PROFESSIONAL. TRUSTED. ESTABLISHED.",
+      exploreBtnText: "Explore Work",
+      exploreBtnLink: "/work",
+      contactBtnText: "Contact Us",
+      contactBtnLink: "/contact"
+    }
+  ])
 };
 
 export function loadHomepageContent(): HomepageContent {
@@ -49,6 +63,7 @@ export function loadHomepageContent(): HomepageContent {
       ...parsed,
       heroMediaType,
       heroMediaSrc: parsed.heroMediaSrc || defaultHomepageContent.heroMediaSrc,
+      heroSlidesJson: parsed.heroSlidesJson || defaultHomepageContent.heroSlidesJson,
       stats:
         Array.isArray(parsed.stats) && parsed.stats.length === 4
           ? (parsed.stats as HomepageContent["stats"])
@@ -130,6 +145,7 @@ function normalizeHomepageContent(content: Partial<HomepageContent>): HomepageCo
     ...content,
     heroMediaType,
     heroMediaSrc: content.heroMediaSrc || defaultHomepageContent.heroMediaSrc,
+    heroSlidesJson: content.heroSlidesJson || defaultHomepageContent.heroSlidesJson,
     stats:
       Array.isArray(content.stats) && content.stats.length === 4
         ? (content.stats as HomepageContent["stats"])

@@ -10,6 +10,7 @@ public record HomepageContentResponse(
         String heroMediaType,
         String ctaTitle,
         List<String> stats,
+        String heroSlidesJson,
         Instant updatedAt
 ) {
 }

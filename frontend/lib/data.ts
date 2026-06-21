@@ -16,15 +16,16 @@ import {
 
 export const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/work", label: "Work" },
+  { href: "/about", label: "About Us" },
+  { href: "/products", label: "Mineral Portfolio" },
+  { href: "/specifications", label: "Technical Specifications" },
+  { href: "/safety", label: "ISO Excellence & Safety" },
   { href: "/media", label: "Media" },
-  { href: "/careers", label: "Careers" },
-  { href: "/contact", label: "Contact" }
+  { href: "/legal", label: "Legal & Compliance" }
 ];
 
 export const highlights = [
-  "GST Registered: 23AWWPS5673F2ZU",
+  "Established in 2007",
   "ISO 9001, 14001 & 45001 Certified",
   "CPCB Environmental Compliance",
   "Mine Lease Area: 39.44 Hectares"
@@ -32,7 +33,7 @@ export const highlights = [
 
 export const heroTrustBadges = [
   "Serving Since 2007",
-  "GST Registered: 23AWWPS5673F2ZU",
+  "Registered & Compliant",
   "ISO 9001 Quality System",
   "ISO 14001 Environment System",
   "ISO 45001 Safety System"
@@ -40,8 +41,8 @@ export const heroTrustBadges = [
 
 export const trustBadges = [
   {
-    title: "GST Registered",
-    text: "S S Enterprises is fully registered under GSTIN 23AWWPS5673F2ZU for accountable business.",
+    title: "Registered Business",
+    text: "S S Enterprises is a fully registered and compliant entity for accountable B2B trade.",
     icon: FileCheck2
   },
   {
@@ -68,8 +69,8 @@ export const trustBadges = [
 
 export const whyChooseUs = [
   {
-    title: "Proprietor-Led Trust",
-    text: "Led by Neeraj Shrivastava, offering direct accountability and clear coordination on all requests.",
+    title: "Dedicated Leadership",
+    text: "Offering direct accountability and clear coordination on all requests.",
     icon: UsersRound
   },
   {
@@ -248,7 +249,7 @@ export const testimonials = [
     avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=240&q=85"
   },
   {
-    quote: "Proprietor Neeraj Shrivastava ensures prompt logistical coordination and NABL-accredited reporting.",
+    quote: "S S Enterprises ensures prompt logistical coordination and NABL-accredited reporting.",
     name: "Arvind Patel",
     role: "Operations Director",
     company: "Industrial Metals & Alloys",
@@ -258,7 +259,7 @@ export const testimonials = [
 
 export const timeline = [
   { year: "2007", title: "Mines Lease Issued", text: "Commenced mining operations across the Gosalpur lease (39.44 Hectares) for manganese and iron ores." },
-  { year: "2020", title: "GST Integration", text: "Registered under S S Enterprises (GSTIN 23AWWPS5673F2ZU) to support institutional business contracts." },
+  { year: "2020", title: "Business Integration", text: "Registered under S S Enterprises to support institutional business contracts." },
   { year: "2024", title: "ISO Quality Frameworks", text: "Achieved ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018 certifications for mining safety and ecology." },
   { year: "2025", title: "Active Community CSR", text: "Organized Yoga day camps, swachhata hygiene campaign, and national flag distributions at Gosalpur." },
   { year: "Today", title: "Environmental Stewardship", text: "Maintaining regular water and air quality monitoring logs, fully compliant with CPCB standards." }
@@ -268,7 +269,7 @@ export const whyClientsTrust = [
   "Three ISO certified systems for Quality, Environment, and Health & Safety.",
   "Regular hydrological quality testing (pH, hardness, TDS) safe for local environment.",
   "Transparent CPCB air and noise monitoring results from NABL-accredited labs.",
-  "Proprietor Neeraj Shrivastava's 18+ years of dedicated regional presence and trust."
+  "S S Enterprises' 18+ years of dedicated regional presence and trust."
 ];
 
 export const coreValues = [

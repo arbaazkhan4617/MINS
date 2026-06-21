@@ -26,7 +26,9 @@ export default function ContactPage() {
     { title: "Gosalpur Mine Site", text: settings.mineSiteAddress, icon: MapPin },
     { title: "Phone", text: settings.mobile, icon: Phone, href: telUrl(settings.mobile) },
     { title: "Email", text: settings.email, icon: Mail, href: `mailto:${settings.email}` },
-    { title: "GSTIN", text: `${settings.gstin} (Proprietorship: ${settings.proprietor})`, icon: FileCheck2 },
+    ...(settings.gstin || settings.proprietor
+      ? [{ title: "GSTIN", text: `${settings.gstin} (Proprietorship: ${settings.proprietor})`, icon: FileCheck2 }]
+      : []),
     { title: "Business Hours", text: "Monday to Saturday, 10:00 AM - 6:00 PM", icon: Clock }
   ];
 

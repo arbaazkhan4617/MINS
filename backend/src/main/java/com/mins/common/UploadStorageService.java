@@ -33,18 +33,18 @@ public class UploadStorageService {
 
         try {
             Files.copy(file.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
-            return "/uploads/" + storedFilename;
+            return "/mines_upload/" + storedFilename;
         } catch (IOException exception) {
             throw new UncheckedIOException("Unable to store uploaded file", exception);
         }
     }
 
     public void delete(String url) {
-        if (!url.startsWith("/uploads/")) {
+        if (!url.startsWith("/mines_upload/")) {
             return;
         }
 
-        Path file = uploadDirectory.resolve(url.substring("/uploads/".length())).normalize();
+        Path file = uploadDirectory.resolve(url.substring("/mines_upload/".length())).normalize();
         if (!file.startsWith(uploadDirectory)) {
             return;
         }

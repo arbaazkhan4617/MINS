@@ -28,23 +28,29 @@ public class HomepageContentService {
 
     @PostConstruct
     public void seedDefaultContent() {
-        if (homepageContentRepository.existsById(CONTENT_ID)) {
-            return;
+        if (!homepageContentRepository.existsById(CONTENT_ID)) {
+            HomepageContent content = new HomepageContent(
+                    CONTENT_ID,
+                    "Securing Mineral Continuity. Engineering Global Compliance.",
+                    "Established in 2007, SSE is a premier resource extraction corporation specializing in the ISO 14001:2015, ISO 45001:2018, and ISO 9001:2015 compliant mining, processing, and industrial supply of high-grade Hematite, Manganese Ore, Laterite, and Ochre.",
+                    DEFAULT_HERO_MEDIA,
+                    "image",
+                    "Ready to discuss your next business requirement?",
+                    "2007",
+                    "39.44 HA",
+                    "3 ISOs",
+                    "100% CPCB",
+                    Instant.now()
+            );
+            content.setHeroSlidesJson(defaultHeroSlidesJson());
+            homepageContentRepository.save(content);
+        } else {
+            HomepageContent content = homepageContentRepository.findById(CONTENT_ID).orElseThrow();
+            if (content.getHeroSlidesJson() == null || content.getHeroSlidesJson().isBlank()) {
+                content.setHeroSlidesJson(defaultHeroSlidesJson());
+                homepageContentRepository.save(content);
+            }
         }
-
-        homepageContentRepository.save(new HomepageContent(
-                CONTENT_ID,
-                "Building Trust Since 2007",
-                "ISO 9001, 14001, and 45001 certified manganese, laterite, iron ore, and ochre mining operations at Gosalpur.",
-                DEFAULT_HERO_MEDIA,
-                "image",
-                "Ready to discuss your next business requirement?",
-                "2007",
-                "39.44 HA",
-                "3 ISOs",
-                "100% CPCB",
-                Instant.now()
-        ));
     }
 
     public HomepageContentResponse find() {
@@ -62,6 +68,7 @@ public class HomepageContentService {
         content.setStat2(request.stats().get(1));
         content.setStat3(request.stats().get(2));
         content.setStat4(request.stats().get(3));
+        content.setHeroSlidesJson(request.heroSlidesJson());
         content.setUpdatedAt(Instant.now());
         return toResponse(homepageContentRepository.save(content));
     }
@@ -75,19 +82,23 @@ public class HomepageContentService {
 
     private HomepageContent getContent() {
         return homepageContentRepository.findById(CONTENT_ID)
-                .orElseGet(() -> homepageContentRepository.save(new HomepageContent(
-                        CONTENT_ID,
-                        "Building Trust Since 2007",
-                        "ISO 9001, 14001, and 45001 certified manganese, laterite, iron ore, and ochre mining operations at Gosalpur.",
-                        DEFAULT_HERO_MEDIA,
-                        "image",
-                        "Ready to discuss your next business requirement?",
-                        "2007",
-                        "39.44 HA",
-                        "3 ISOs",
-                        "100% CPCB",
-                        Instant.now()
-                )));
+                .orElseGet(() -> {
+                    HomepageContent c = new HomepageContent(
+                            CONTENT_ID,
+                            "Securing Mineral Continuity. Engineering Global Compliance.",
+                            "Established in 2007, SSE is a premier resource extraction corporation specializing in the ISO 14001:2015, ISO 45001:2018, and ISO 9001:2015 compliant mining, processing, and industrial supply of high-grade Hematite, Manganese Ore, Laterite, and Ochre.",
+                            DEFAULT_HERO_MEDIA,
+                            "image",
+                            "Ready to discuss your next business requirement?",
+                            "2007",
+                            "39.44 HA",
+                            "3 ISOs",
+                            "100% CPCB",
+                            Instant.now()
+                    );
+                    c.setHeroSlidesJson(defaultHeroSlidesJson());
+                    return homepageContentRepository.save(c);
+                });
     }
 
     private String normalizeMediaType(String mediaType) {
@@ -102,7 +113,24 @@ public class HomepageContentService {
                 normalizeMediaType(content.getHeroMediaType()),
                 content.getCtaTitle(),
                 List.of(content.getStat1(), content.getStat2(), content.getStat3(), content.getStat4()),
+                content.getHeroSlidesJson(),
                 content.getUpdatedAt()
         );
+    }
+
+    private String defaultHeroSlidesJson() {
+        return "[\n" +
+                "  {\n" +
+                "    \"mediaSrc\": \"" + DEFAULT_HERO_MEDIA + "\",\n" +
+                "    \"mediaType\": \"image\",\n" +
+                "    \"headline\": \"Securing Mineral Continuity. Engineering Global Compliance.\",\n" +
+                "    \"subheading\": \"Established in 2007, SSE is a premier resource extraction corporation specializing in the ISO 14001:2015 | ENVIRONMENT MANAGEMENT SYSTEM, ISO 45001:2018 OCCUPATIONAL HEALTH & SAFETY MANAGEMENT SYSTEM, ISO 9001:2015 QUALITY MANAGEMENT SYSTEM compliant mining, processing, and industrial supply of high-grade Hematite (including premium Blue Dust), Manganese Ore, Laterite, and Ochre.\",\n" +
+                "    \"badge\": \"SECURE SUPPLY. GLOBAL COMPLIANCE.\",\n" +
+                "    \"exploreBtnText\": \"Mineral Portfolio\",\n" +
+                "    \"exploreBtnLink\": \"/products\",\n" +
+                "    \"contactBtnText\": \"Global Procurement\",\n" +
+                "    \"contactBtnLink\": \"/procurement\"\n" +
+                "  }\n" +
+                "]";
     }
 }

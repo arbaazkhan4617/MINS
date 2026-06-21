@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { MotionReveal } from "@/components/ui/motion-reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { resolveApiUrl } from "@/lib/api";
-import { highlights } from "@/lib/data";
 import { defaultSiteSettings, fetchSiteSettings, type SiteSettings } from "@/lib/site-settings-store";
 
 export function AboutPreview() {
@@ -42,7 +41,12 @@ export function AboutPreview() {
             text={settings.aboutContent}
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {highlights.map((item) => (
+            {[
+              settings.gstin ? `GST Registered: ${settings.gstin}` : "Established in 2007",
+              "ISO 9001, 14001 & 45001 Certified",
+              "CPCB Environmental Compliance",
+              "Mine Lease Area: 39.44 Hectares"
+            ].map((item) => (
               <div key={item} className="flex gap-3 rounded-2xl bg-ivory p-4">
                 <CheckCircle2 className="mt-0.5 shrink-0 text-gold" size={20} />
                 <p className="text-sm font-semibold leading-6 text-charcoal/75">

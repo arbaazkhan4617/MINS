@@ -24,7 +24,7 @@ app:
     email: ${ADMIN_EMAIL:admin@mins.in}
     password-hash: '${ADMIN_PASSWORD_HASH:$2a$10$GmbRwx6Sldq4mnsqs8eor.ij9FRfo80oREn536tOOyml8g8JLYiZO}'
   uploads:
-    directory: uploads
+    directory: mines_upload
   jwt:
     issuer: mins-api
     secret: "replace-this-development-secret-with-a-secure-production-secret"
